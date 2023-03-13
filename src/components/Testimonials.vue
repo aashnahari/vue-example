@@ -20,6 +20,7 @@ export default {
     <NavBar></NavBar>
 
   </header>
+  <h1> TESTIMONIALS</h1>
   This is the testimonials page.
 </template>
 

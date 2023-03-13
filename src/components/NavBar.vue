@@ -34,7 +34,7 @@ export default {
         <div class="end">
 
             <NavItem>
-                <a href="/cart.html" rel="noopener">Cart</a>
+                <a href="/#/cart" rel="noopener">Cart</a>
             </NavItem>
         </div>
         
