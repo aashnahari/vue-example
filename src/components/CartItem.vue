@@ -3,17 +3,18 @@
         emits: ['addOne', 'deleteOne'],
         methods: {
             addOne() {
-            quantity++
-            //this.$emit('changeData', hotdog.hotdog);
+            console.log('addOne in cartitem')
+            this.$emit('addOne');
             },
             deleteOne(){
-                quantity--
+            this.$emit('deleteOne');
             }
         }
     }    
 </script>
 <template>
-    <div class="item">
+    <div>
+        <slot></slot>
         <button @click="addOne">Add One</button>
         <button @click="deleteOne">Delete One</button>
     </div>

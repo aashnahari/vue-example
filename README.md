@@ -27,3 +27,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+### Food for Thought
+
+The routes have a hashtags in the beginning. Others may not use this if they want data to reset when a page is left.
