@@ -1,5 +1,6 @@
 <script>
 import NavBar from './NavBar.vue'
+import axios, { AxiosError } from 'axios'
 
 export default {
     data() {
@@ -46,6 +47,12 @@ export default {
         changeData(hotdog) {
             this.src = hotdog.src;
             this.$emit('changeData', hotdog.hotdog);
+        },
+        fetchDogs(){
+            axios.get('https://backend-for-vue-example.onrender.com/getDogs').then(response => {
+               this.otherDogs = response.data; 
+           })
+
         }
     },
     props: {
@@ -61,27 +68,10 @@ export default {
         <img :src="src" alt="hotdog">
         <div class="links">
             <!-- do you think you could wrap this better?-->
-            <a v-on:click="e => changeData(otherDogs[1])">
-                Put some {{ otherDogs[1].hotdog }} on it
+            <a v-for = "dog in otherDogs" v-on:click="e => changeData(dog)">
+                Put some {{ dog.hotdog }} on it
             </a>
-
-            <a v-on:click="e => changeData(otherDogs[2])">
-                Put some {{ otherDogs[2].hotdog }} on it
-            </a>
-
-            <a v-on:click="e => changeData(otherDogs[3])">
-                Put some {{ otherDogs[3].hotdog }} on it
-            </a>
-            <a v-on:click="e => changeData(otherDogs[4])">
-                Put some {{ otherDogs[4].hotdog }} on it
-            </a>
-            <a v-on:click="e => changeData(otherDogs[5])">
-                Put some {{ otherDogs[5].hotdog }} on it
-            </a>
-            <a v-on:click="e => changeData(otherDogs[6])">
-                Put some {{ otherDogs[6].hotdog }} on it
-            </a>
-
+            <button v-on:click = "fetchDogs">Fetch Dogs</button>
         </div>
     </body>
 </template>
